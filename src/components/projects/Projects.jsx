@@ -36,6 +36,42 @@ const PROJETS = [
     repoLink: "https://github.com/jarodpg/Tardis-Train-Delay-IA",
   },
   {
+    id: "cvrie",
+    categories: ["ai-data"],
+    year: 2,
+    title: "Dr CVRIE",
+    description:
+      "Medical imaging assistant: pneumonia detection on chest X-rays (supervised) and triage of patient testimonials by clustering (unsupervised).",
+    imageSrc: "cvrie.webp",
+    imageAlt: "Cover of the Dr CVRIE project",
+    skills: ["Python", "Sklearn", "Pandas", "Jupyter"],
+    repoLink: "https://github.com/jarodpg/CVRIE-IA-Medical-Assistant",
+  },
+  {
+    id: "techyourjob",
+    categories: ["web", "ai-data"],
+    year: 1,
+    title: "Tech Your Job",
+    description:
+      "Tech job aggregator with automated scraping, AI-based job recommendations and real-time applications, built as containerized microservices.",
+    imageSrc: "techyourjob.webp",
+    imageAlt: "Cover of the Tech Your Job app",
+    skills: ["Next.js", "TypeScript", "FastAPI", "Docker"],
+    repoLink: "https://github.com/jarodpg/Tech-Your-Job",
+  },
+  {
+    id: "nextbuy",
+    categories: ["ai-data"],
+    year: 1,
+    title: "NextBuy",
+    description:
+      "Exploratory data analysis and predictive models on millions of grocery orders to turn raw data into business insights.",
+    imageSrc: "nextbuy.webp",
+    imageAlt: "Cover of the NextBuy project",
+    skills: ["Python", "Pandas", "Sklearn", "LightGBM"],
+    repoLink: "https://github.com/jarodpg/NextBuy",
+  },
+  {
     id: "yowl",
     categories: ["web", "design"],
     year: 1,

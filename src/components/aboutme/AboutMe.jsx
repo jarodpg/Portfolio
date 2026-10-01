@@ -7,7 +7,7 @@ import "./AboutMe.css";
 const CHIFFRES = [
   { value: "2nd", label: "year at Epitech" },
   { value: "AI & Data", label: "specialization" },
-  { value: "4", label: "projects built" },
+  { value: "7", label: "projects built" },
   { value: "2026", label: "open to an internship" },
 ];
 
