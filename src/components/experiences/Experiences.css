@@ -1,0 +1,431 @@
+/* ================================================================
+   EXPERIENCES — classes préfixées "xp-" (aucun conflit avec App.css)
+   Une ligne par période : années à gauche, puis une carte qui
+   regroupe le diplôme (à gauche) et les expériences pro (à droite).
+================================================================ */
+
+.xp {
+  --xp-red: #C8272F;
+  --xp-red-bright: #ff6b71;
+  --xp-muted: #b1b1b1;
+  --xp-subtle: #8f8f96;
+  --xp-line: rgba(255, 255, 255, 0.1);
+  --xp-rail: 6.5rem;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 12vh auto 0;
+  padding: 2rem clamp(1rem, 4vw, 3rem) 0;
+  box-sizing: border-box;
+  scroll-margin-top: 2rem;
+
+  font-family: 'Satoshi', system-ui, sans-serif;
+  color: #ffffff;
+}
+
+.xp *,
+.xp *::before,
+.xp *::after {
+  box-sizing: border-box;
+}
+
+:where(.xp) p {
+  margin: 0;
+}
+
+.xp-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- En-tête ---------- */
+
+.xp-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+}
+
+.xp-title {
+  margin: 0;
+  font-size: clamp(2rem, min(8vh, 10vw), 4.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.xp-title span {
+  color: #dc2626;
+}
+
+.xp-lead {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  color: #d1d5db;
+  font-size: clamp(1.05rem, 2.6vh, 1.3rem);
+  line-height: 1.5;
+}
+
+/* ---------- Frise ---------- */
+
+.xp-timeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Rail vertical à gauche */
+.xp-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: calc(var(--xp-rail) - 1.25rem);
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--xp-red) 0%,
+    rgba(200, 39, 47, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+.xp-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--xp-rail) minmax(0, 1fr);
+  align-items: start;
+}
+
+/* Point sur le rail */
+.xp-row::before {
+  content: "";
+  position: absolute;
+  top: 1.45rem;
+  left: calc(var(--xp-rail) - 1.25rem + 1px);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #160909;
+  border: 2px solid var(--xp-red);
+}
+
+.xp-row.is-current::before {
+  background: var(--xp-red);
+  box-shadow: 0 0 14px rgba(200, 39, 47, 0.9);
+}
+
+.xp-period {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.85rem;
+  padding-right: 2.25rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.xp-period-start {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.xp-period-end {
+  color: var(--xp-subtle);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.xp-row.is-current .xp-period-start {
+  color: var(--xp-red-bright);
+}
+
+/* ---------- Carte d'une période ---------- */
+
+.xp-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  border-radius: 18px;
+  background: rgba(20, 10, 10, 0.55);
+  border: 1px solid var(--xp-line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.xp-panel:hover {
+  border-color: rgba(200, 39, 47, 0.45);
+}
+
+.xp-row.is-current .xp-panel {
+  border-color: rgba(200, 39, 47, 0.45);
+  box-shadow:
+    0 0 22px rgba(200, 39, 47, 0.15),
+    0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.xp-degree {
+  position: relative;
+  padding: 1.1rem 1.35rem;
+  background: linear-gradient(135deg, rgba(200, 39, 47, 0.12), transparent 70%);
+  border-right: 1px solid var(--xp-line);
+}
+
+.xp-work {
+  padding: 1.1rem 1.35rem;
+}
+
+.xp-kind {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: var(--xp-subtle);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.xp-degree .xp-kind {
+  color: var(--xp-red-bright);
+}
+
+.xp-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.xp-logo {
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.xp-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.xp-name {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.xp-meta {
+  margin-top: 0.1rem;
+  color: var(--xp-muted);
+  font-size: 0.88rem;
+}
+
+.xp-date {
+  flex-shrink: 0;
+  color: var(--xp-subtle);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.xp-text {
+  margin-top: 0.6rem;
+  color: #d1d5db;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.xp-now {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(200, 39, 47, 0.16);
+  border: 1px solid rgba(200, 39, 47, 0.5);
+  color: #ffb3b6;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ---------- Expériences pro ---------- */
+
+.xp-jobs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.xp-job + .xp-job {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--xp-line);
+}
+
+.xp-skills {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.xp-skill {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #d4d4d8;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ---------- Créneau ouvert (stage / alternance) ---------- */
+
+.xp-open {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(200, 39, 47, 0.07);
+  border: 1px dashed rgba(200, 39, 47, 0.6);
+}
+
+.xp-open + .xp-job {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.xp-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+}
+
+.xp-open-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.xp-open-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.xp-open-text {
+  margin-top: 0.15rem;
+  color: var(--xp-muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.xp-open-link {
+  flex-shrink: 0;
+  padding: 0.45rem 0.85rem;
+  border-radius: 10px;
+  background: var(--xp-red);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.xp-open-link:hover {
+  background: #dd2f38;
+}
+
+.xp-open-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ---------- Tablette : diplôme au-dessus des expériences ---------- */
+
+@media (max-width: 900px) {
+  .xp {
+    --xp-rail: 4.75rem;
+  }
+
+  .xp-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .xp-degree {
+    border-right: 0;
+    border-bottom: 1px solid var(--xp-line);
+  }
+
+  .xp-period {
+    padding-right: 1.9rem;
+  }
+
+  .xp-period-start {
+    font-size: 1.05rem;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 560px) {
+  .xp {
+    --xp-rail: 1.5rem;
+  }
+
+  .xp-timeline::before {
+    left: 0.25rem;
+  }
+
+  .xp-row {
+    grid-template-columns: 1fr;
+    padding-left: var(--xp-rail);
+  }
+
+  .xp-row::before {
+    top: 0.7rem;
+    left: calc(0.25rem + 1px);
+  }
+
+  .xp-period {
+    flex-direction: row;
+    gap: 0.35rem;
+    align-items: baseline;
+    padding: 0 0 0.5rem;
+    text-align: left;
+  }
+
+  .xp-period-end::before {
+    content: "– ";
+  }
+
+  .xp-degree,
+  .xp-work {
+    padding: 1rem;
+  }
+
+  .xp-open {
+    flex-wrap: wrap;
+  }
+
+  .xp-open-link {
+    margin-left: calc(8px + 0.85rem);
+  }
+}

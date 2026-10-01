@@ -1,0 +1,319 @@
+/* ================================================================
+   ABOUT ME — classes préfixées "ab-" (aucun conflit avec App.css)
+   Pas de cartes : la typographie, les filets et l'espace structurent.
+================================================================ */
+
+.ab {
+  --ab-red: #C8272F;
+  --ab-red-bright: #ff6b71;
+  --ab-muted: #9ca3af;
+  --ab-line: rgba(255, 255, 255, 0.12);
+
+  width: 100%;
+  margin: 12vh 0 0;
+  padding: 2rem clamp(1rem, 6vw, 7rem) 0;
+  box-sizing: border-box;
+  scroll-margin-top: 2rem;
+
+  font-family: 'Satoshi', system-ui, sans-serif;
+  color: #ffffff;
+}
+
+.ab *,
+.ab *::before,
+.ab *::after {
+  box-sizing: border-box;
+}
+
+:where(.ab) p,
+:where(.ab) dl,
+:where(.ab) dd {
+  margin: 0;
+}
+
+/* ---------- En-tête ---------- */
+
+.ab-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 7vh, 5rem);
+}
+
+.ab-title {
+  margin: 0;
+  font-size: clamp(2rem, min(8vh, 10vw), 4.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.ab-title span {
+  color: #dc2626;
+}
+
+.ab-lead {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  color: #d1d5db;
+  font-size: clamp(1.05rem, 2.6vh, 1.3rem);
+  line-height: 1.5;
+}
+
+/* ---------- Présentation + chiffres ---------- */
+
+.ab-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+}
+
+.ab-hello {
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ff4d4d, #ffffff 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.ab-text {
+  max-width: 60ch;
+  margin-top: 1.25rem;
+  color: #d1d5db;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.ab-text strong {
+  color: #ffffff;
+}
+
+/* Chiffres : grille 2×2 séparée par de simples filets */
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* La valeur s'affiche au-dessus du libellé (l'ordre HTML reste dt puis dd) */
+.ab-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: clamp(1.1rem, 2.5vw, 1.75rem) clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.ab-stat:nth-child(odd) {
+  padding-left: 0;
+  border-right: 1px solid var(--ab-line);
+}
+
+.ab-stat:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--ab-line);
+}
+
+.ab-stat-value {
+  color: var(--ab-red-bright);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.ab-stat-label {
+  color: var(--ab-muted);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.ab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.ab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ab-btn:hover {
+  border-color: var(--ab-red);
+  background: rgba(200, 39, 47, 0.14);
+}
+
+.ab-btn--primary {
+  background: var(--ab-red);
+  border-color: var(--ab-red);
+  box-shadow: 0 10px 28px rgba(200, 39, 47, 0.35);
+}
+
+.ab-btn--primary:hover {
+  background: #dd2f38;
+  box-shadow: 0 14px 36px rgba(200, 39, 47, 0.5);
+}
+
+.ab-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ---------- Parcours : frise horizontale ---------- */
+
+.ab-journey {
+  margin-top: clamp(3.5rem, 10vh, 6.5rem);
+}
+
+.ab-journey-title {
+  margin: 0 0 2rem;
+  color: var(--ab-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ab-steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* La ligne qui relie les étapes, au niveau des points */
+.ab-steps::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(200, 39, 47, 0.25) 0%,
+    var(--ab-red) 85%,
+    transparent 100%
+  );
+}
+
+.ab-step {
+  position: relative;
+  padding-top: 2.25rem;
+}
+
+.ab-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #160909;
+  border: 2px solid var(--ab-red);
+}
+
+.ab-step.is-current .ab-dot {
+  background: var(--ab-red);
+  box-shadow: 0 0 16px rgba(200, 39, 47, 0.95);
+}
+
+.ab-period {
+  color: var(--ab-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ab-step.is-current .ab-period {
+  color: var(--ab-red-bright);
+}
+
+.ab-school {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.ab-desc {
+  margin-top: 0.6rem;
+  color: #d1d5db;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Ce que la période m'a apporté */
+.ab-lesson {
+  margin-top: 1rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(200, 39, 47, 0.6);
+  color: var(--ab-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ---------- Tablette : présentation empilée, frise verticale ---------- */
+
+@media (max-width: 960px) {
+  .ab-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-steps {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding-left: 2rem;
+  }
+
+  .ab-steps::before {
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 7px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(to bottom, rgba(200, 39, 47, 0.25) 0%, var(--ab-red) 100%);
+  }
+
+  .ab-step {
+    padding-top: 0;
+  }
+
+  .ab-dot {
+    top: 0.1rem;
+    left: -2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ab-btn {
+    flex: 1;
+  }
+
+  .ab-stat-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab * {
+    transition: none !important;
+  }
+}
